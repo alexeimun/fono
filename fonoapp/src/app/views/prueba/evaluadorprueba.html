@@ -1,0 +1,365 @@
+<md-content md-theme="dark" class="md-padding" layout="row" layout-align="center" layout-sm="column">
+</md-content>
+<md-content class="md-padding flex-100">
+    <p class="ttitle"><i class="material-icons">person</i> Paciente: <span style="color: crimson">{{vm.paciente.NOMBRES_PACIENTE+' '+vm.paciente.APELLIDOS_PACIENTE}}</span>
+    </p>
+    <br>
+    <md-progress-linear md-mode="determinate" value="{{(vm.index/45)*100}}"></md-progress-linear>
+    <small style="color:grey">Tiempo trasncurrido de la prueba: {{ vm.time.min+':'+vm.time.seg}}</small>
+    <div layout="row" layout-align-gt-md="center">
+
+        <div ng-if="vm.summary" class="flex-95">
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised" md-colors="{background: 'blue'}" ui-sref="">
+                    <i class="material-icons">assignment</i> Ver evaluación
+                </md-button>
+            </div>
+        </div>
+        <form name="evaluadorForm" class="flex-95" ng-show="!vm.summary && !vm.isEvaluating">
+            <h3 style="color:#093d70">{{ (vm.index+1)+') ' + vm.questions[vm.index].TITULO_PREGUNTA}}
+                <small style="color:crimson">{{ !vm.questions[vm.index].ap?'(sin apoyo visual)':'' }}</small>
+            </h3>
+            <br>
+            <div layout="row" class="qbody">
+                <div ng-if="vm.questions[vm.index].SITUACION" flex>
+                    <h4>Situación:</h4><br>
+                    <p>
+                        {{ vm.questions[vm.index].SITUACION }}
+                    </p>
+                </div>
+
+                <div ng-if="vm.questions[vm.index].MATERIAL" flex>
+                    <h4>Material:</h4><br>
+                    <p>
+                        {{ vm.questions[vm.index].MATERIAL }}
+                    </p>
+                </div>
+
+                <div ng-if="vm.questions[vm.index].PALABRAS" flex>
+                    <h4>Palabras:</h4><br>
+                    <p>
+                        {{ vm.questions[vm.index].PALABRAS }}
+                    </p>
+                </div>
+
+                <div ng-if="vm.questions[vm.index].ORACIONES" flex>
+                    <h4>Oraciones:</h4><br>
+                    <p>
+                        {{ vm.questions[vm.index].ORACIONES }}
+                    </p>
+                </div>
+
+                <div ng-if="vm.questions[vm.index].staticInstructions || vm.questions[vm.index].dynamicInstructions"
+                     flex>
+                    <h4>Intrucciones:</h4>
+
+                    <div ng-if="vm.questions[vm.index].staticInstructions">
+                        <p>
+                            {{ vm.questions[vm.index].INSTRUCCION }}
+                        </p>
+                    </div>
+                    <div ng-if="vm.questions[vm.index].dynamicInstructions" layout="row" layout-align="center center">
+                        <md-input-container ng-if="!vm.cleanSelect">
+                            <label>Seleccione las láminas a mostrar</label>
+                            <md-select ng-model="vm.instructionIndex"
+                                       ng-change="vm.changeInstruction(vm.instructionIndex)">
+                                <md-option ng-value="$index"
+                                           ng-repeat="item in vm.questions[vm.index].dynamicInstructions">
+                                    {{item.label}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div ng-if="vm.questions[vm.index].type =='multiple'" layout="row" layout-align="center center">
+                        <md-input-container ng-if="!vm.cleanSelect">
+                            <label>Seleccione las láminas a mostrar</label>
+                            <md-select ng-model="vm.multipleInstructionIndex"
+                                       ng-change="vm.changemultipleInstruction(vm.multipleInstructionIndex)">
+                                <md-option ng-value="$index"
+                                           ng-repeat="item in vm.questions[vm.index].secondDynamicInstructions">
+                                    {{item.label}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div flex>
+                    <h4> Criterio de aceptación:</h4>
+                    <p>
+                        {{ vm.questions[vm.index].CRITERIO_ACEPTACION }}
+                    </p>
+                </div>
+            </div>
+            <!--Audio display-->
+            <div ng-if="vm.questions[vm.index].type == 'multimedia' " layout="row">
+                <div ng-repeat="audio in vm.prepareAudio(vm.questions[vm.index].dynamicInstructions[vm.instructionIndex]['objects'])"
+                     flex>
+                    <audio controls>
+                        <source ng-src="{{ audio | trustedAudioUrl }}" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+
+            <!--Image preview patient-->
+            <div layout="row" ng-if="vm.questions[vm.index].ap">
+                <md-card ng-repeat="img in vm.imagesPatient">
+                    <img ng-src="{{ img.url }}" class="md-card-image" class="img-card" width="1%">
+                    <md-card-content>
+                        <h2>{{ img.TITULO_IMAGEN }}</h2>
+                        <p>{{ img.CATEGORIA }}</p>
+                    </md-card-content>
+                    <md-card-footer>
+                        {{ img.SUB_CATEGORIA+(img.ALTERNA?', '+img.ALTERNA:'') }}
+                    </md-card-footer>
+                </md-card>
+            </div>
+
+            <!--Type sort-->
+            <div ng-if="vm.questions[vm.index].type =='sort'">
+                <div layout="row" layout-align="center center">
+                    <md-input-container ng-if="vm.index != 15">
+                        <label>Objetos semiconcretos</label>
+                        <md-select ng-model="vm.selectedObjects" multiple>
+                            <md-optgroup label="Cocina">
+                                <md-option ng-value="object.url"
+                                           ng-repeat="object in vm.objects | filter: {category: 'Cocina' }">
+                                    {{object.name}}
+                                </md-option>
+                            </md-optgroup>
+                            <md-optgroup label="Animales">
+                                <md-option ng-value="object.url"
+                                           ng-repeat="object in vm.objects | filter: {category: 'Animales' }">
+                                    {{object.name}}
+                                </md-option>
+                            </md-optgroup>
+                            <md-optgroup label="Muebles de la casa">
+                                <md-option ng-value="object.url"
+                                           ng-repeat="object in vm.objects | filter: {category: 'Muebles' }">
+                                    {{object.name}}
+                                </md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+
+
+                    <md-input-container ng-if="vm.index == 15">
+                        <label>Objetos semiconcretos</label>
+                        <md-select ng-model="vm.selectedObjects" multiple>
+                            <md-option ng-value="object.url"
+                                       ng-repeat="object in vm.objects">
+                                {{object.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-card ng-repeat="img in vm.queryImages(vm.selectedObjects)">
+                        <img ng-src="{{ img.url }}" class="md-card-image" class="img-card">
+                        <md-card-content>
+                            <h2>{{ img.TITULO_IMAGEN }}</h2>
+                            <p>{{ img.CATEGORIA }}</p>
+                        </md-card-content>
+                        <md-card-footer>
+                            {{ img.SUB_CATEGORIA+(img.ALTERNA?', '+img.ALTERNA:'') }}
+                        </md-card-footer>
+                    </md-card>
+                </div>
+
+                <div layout="row" layout-align="center center" ng-hide="vm.selectedObjects.length==0">
+                    <md-button layout-align="center center" class="md-raised" md-colors="{background: 'red'}"
+                               ng-click="vm.sendPatientImages()">
+                        <i class="material-icons">send</i> Enviar imágenes al paciente
+                    </md-button>
+                </div>
+            </div>
+
+            <p ng-if="vm.questions[vm.index].ap"><span style="color:crimson">Respuesta:</span> <span>{{ vm.renderResponse()}}</span>
+            </p>
+
+            <!--Type randomButton-->
+            <div ng-if="vm.questions[vm.index].type == 'randomButton' ">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised" md-colors="{background: 'blue'}" ng-click="vm.randomImages()">
+                        <i class="material-icons">autorenew</i> Revolver imágenes
+                    </md-button>
+                </div>
+            </div>
+
+
+            <br>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised" md-colors="{background: 'green'}" ng-click="vm.evaluate()">
+                    <i class="material-icons">assignment</i> Evaluar ítem
+                </md-button>
+            </div>
+
+        </form>
+
+        <!--Evaluate form-->
+        <form name="evaluarForm" class="flex-95  animate-show" ng-show="!vm.summary&& vm.isEvaluating">
+            <p class="p-item">¿El paciente ha respondido? <span class="radioValue">{{ vm.assignment.RESPONDIO == 1 ? 'Respondió':'No respondió' }}</span>
+            </p>
+            <md-radio-group ng-model="vm.assignment.RESPONDIO">
+                <md-radio-button value="0">No respondió</md-radio-button>
+                <md-radio-button value="1">Respondió</md-radio-button>
+            </md-radio-group>
+
+            <div ng-if="vm.assignment.RESPONDIO==1">
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.AYUDA_INDEPENDIENTE}"> ¿Cómo ha respondio? <span
+                        class="radioValue">{{ vm.assignment.AYUDA_INDEPENDIENTE && (vm.assignment.AYUDA_INDEPENDIENTE == 1 ? 'Independiente':'Con ayuda') }}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.AYUDA_INDEPENDIENTE" required>
+                    <md-radio-button value="0">Con ayuda</md-radio-button>
+                    <md-radio-button value="1">Independiente</md-radio-button>
+                </md-radio-group>
+            </div>
+
+            <div ng-if="vm.assignment.AYUDA_INDEPENDIENTE==0 &&vm.assignment.RESPONDIO == 1" style="margin-left: 80px;">
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.AUDITIVO_VISUAL}">Referente: <span
+                        class="radioValue">{{ vm.assignment.AUDITIVO_VISUAL && (vm.assignment.AUDITIVO_VISUAL == 1 ? 'Referente visual':'Referente auditivo') }}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.AUDITIVO_VISUAL" required>
+                    <md-radio-button value="0">Referente auditivo</md-radio-button>
+                    <md-radio-button value="1">Referente visual</md-radio-button>
+                </md-radio-group>
+
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.CONSISTENTE_INCONSISTENTE}">Consistencia: <span
+                        class="radioValue">{{ vm.assignment.CONSISTENTE_INCONSISTENTE && (vm.assignment.CONSISTENTE_INCONSISTENTE == 1 ? 'Inconsistente':'Consistente') }}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.CONSISTENTE_INCONSISTENTE" required>
+                    <md-radio-button value="0">Consistente</md-radio-button>
+                    <md-radio-button value="1">Inconsistente</md-radio-button>
+                </md-radio-group>
+
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.VERBAL_NOVERBAL}">Modo: <span
+                        class="radioValue">{{ vm.assignment.VERBAL_NOVERBAL && (vm.assignment.VERBAL_NOVERBAL == 1 ? 'No verbal':'Verbal')}}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.VERBAL_NOVERBAL" required>
+                    <md-radio-button value="0">Verbal</md-radio-button>
+                    <md-radio-button value="1">No verbal</md-radio-button>
+                </md-radio-group>
+            </div>
+
+            <div style="margin-left: 80px;"
+                 ng-if="vm.assignment.AYUDA_INDEPENDIENTE==1 && vm.assignment.RESPONDIO == 1">
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.CONSISTENTE_INCONSISTENTE}">Consistencia: <span
+                        class="radioValue">{{ vm.assignment.CONSISTENTE_INCONSISTENTE && (vm.assignment.CONSISTENTE_INCONSISTENTE == 1 ? 'Inconsistente':'Consistente') }}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.CONSISTENTE_INCONSISTENTE" required>
+                    <md-radio-button value="0">Consistente</md-radio-button>
+                    <md-radio-button value="1">Inconsistente</md-radio-button>
+                </md-radio-group>
+
+                <p class="p-item" ng-class="{'has-error':!vm.assignment.VERBAL_NOVERBAL}">Modo: <span
+                        class="radioValue">{{ vm.assignment.VERBAL_NOVERBAL && (vm.assignment.VERBAL_NOVERBAL == 1 ? 'No verbal':'Verbal')}}</span>
+                </p>
+                <md-radio-group ng-model="vm.assignment.VERBAL_NOVERBAL" required>
+                    <md-radio-button value="0">Verbal</md-radio-button>
+                    <md-radio-button value="1">No verbal</md-radio-button>
+                </md-radio-group>
+            </div>
+
+
+            <br>
+            <md-input-container class="md-block">
+                <label>Observaciones</label>
+                <textarea ng-model="vm.assignment.OBSERVACIONES" md-maxlength="500" rows="5"
+                          md-select-on-focus></textarea>
+            </md-input-container>
+
+            <br>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised" md-colors="{background: !evaluarForm.$valid?'red':'green'}"
+                           ng-click="vm.nextQuestion()"
+                           ng-disabled="!evaluarForm.$valid">
+                    <i class="material-icons"> {{!evaluarForm.$valid?'error':'done'}}</i>
+                    {{!evaluarForm.$valid?'Debe llenar el formulario':
+                    (vm.index==45?'Enviar y terminar prueba':'Enviar y continuar')}}
+                </md-button>
+            </div>
+        </form>
+
+    </div>
+</md-content>
+
+<style>
+    .has-error
+    {
+        color: #ab003f;
+    }
+
+    md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off
+    {
+        border-color: crimson;
+    }
+
+    md-radio-button.md-default-theme .md-on, md-radio-button .md-on
+    {
+        background-color: crimson;
+    }
+
+    md-radio-group
+    {
+        width: 150px;
+    }
+
+    .p-item
+    {
+        padding-bottom: 10px;
+    }
+
+    .radioValue
+    {
+        margin-left: 5px;
+        color: crimson;
+        font-weight: bold;
+        padding: 5px;
+    }
+
+    .animate-show.ng-hide-add, .animate-show.ng-hide-remove
+    {
+        transition: all linear 0.6s;
+    }
+
+    .animate-show.ng-hide
+    {
+        line-height: 0;
+        opacity: 0;
+        padding: 0 10px;
+    }
+
+    .ttitle
+    {
+        font-weight: 600;
+        font-size: 15pt;
+        text-align: center;
+    }
+
+    form
+    {
+        padding: 5px;
+    }
+
+    .qbody
+    {
+        padding: 5px;
+    }
+
+    .qbody p
+    {
+        padding: 10px;
+        text-align: justify;
+    }
+
+    md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar
+    {
+        background-color: crimson;
+    }
+
+    md-progress-linear.md-default-theme .md-container, md-progress-linear .md-container
+    {
+        background-color: rgba(220, 20, 60, 0.25);
+    }
+</style>

@@ -1,0 +1,78 @@
+<style>
+    input.ng-invalid
+    {
+        border-bottom: 2px solid #bc0048;
+    }
+</style>
+
+<md-content md-theme="dark" class="md-padding" layout="row" layout-align="center" layout-sm="column">
+    <h2>Crear un nuevo paciente</h2>
+</md-content>
+
+
+<md-content class="md-padding">
+    <form name="pacienteForm">
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Nombres</label>
+                <input ng-model="vm.paciente.NOMBRES_PACIENTE" name="nombres_paciente" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Apellidos</label>
+                <input ng-model="vm.paciente.APELLIDOS_PACIENTE" name="apellidos_paciente" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Teléfono de residencia</label>
+                <input ng-model="vm.paciente.TELEFONO_RESIDENCIA" name="telefono_residencia" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Dirección de residencia</label>
+                <input ng-model="vm.paciente.DIRECCION_RESIDENCIA" name="direccion_residencia" required>
+            </md-input-container>
+        </div>
+
+        <md-input-container>
+            <label>Sexo</label>
+            <md-select ng-model="vm.paciente.SEXO">
+                <md-option ng-value="sexo.value" ng-repeat="sexo in vm.sexos">
+                    {{sexo.text}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Número de identificación</label>
+                <input ng-model="vm.paciente.NUMERO_IDENTIFICACION" name="numero_identificacion" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Fecha de Naciemiento</label>
+                <input type="date" ng-model="vm.paciente.FECHA_NACIMIENTO" name="fecha_nacimiento" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Nombre acudiente</label>
+                <input ng-model="vm.paciente.NOMBRE_ACUDIENTE" name="nombre_acudiente" required>
+            </md-input-container>
+        </div>
+
+        <md-button class="md-raised" md-colors="{background: 'pink'}" ng-click="vm.onSubmit()"
+                   ng-disabled="!pacienteForm.$valid">
+            Guardar
+        </md-button>
+    </form>
+</md-content>

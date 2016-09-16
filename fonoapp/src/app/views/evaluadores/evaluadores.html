@@ -1,0 +1,29 @@
+<!-- TODO: Replace table to table component when https://github.com/angular/material/issues/796 will closed -->
+<div layout-gt-md="row" layout-align="center">
+    <md-button class="md-fab md-wayrn md-mini" ui-sref="home.crearevaluador">
+        <i class="material-icons">add</i>
+    </md-button>
+</div>
+<br>
+<div class="table-responsive-vertical md-whiteframe-z1">
+    <table id="table" class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Creado en</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="paciente in vm.evaluadores track by $index">
+            <td data-title="ID">{{$index + 1}}</td>
+            <td data-title="Issue">{{paciente.NOMBRE_EVALUADOR}}</td>
+            <td data-title="Status">{{paciente.TELEFONO}}</td>
+            <td data-title="Status">{{paciente.FECHA_CREACION}}</td>
+            <td ><i ng-if="paciente.SCOPE==0" ng-click="vm.removeEvaluador(paciente.ID_EVALUADOR)" style="cursor: pointer;" class="material-icons">delete</i></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

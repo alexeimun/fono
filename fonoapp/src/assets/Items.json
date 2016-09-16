@@ -1,0 +1,587 @@
+{
+  "items": [
+    {
+      "item": 1,
+      "idManual": 21,
+      "material": "moto,carro,bicicleta,perro,gato,pato,vaca,leon,jirafa,muneca,zapato,pelota,sillas,mesa,cama,estufa,olla,cucharon,banano,manzana,uvas",
+      "type": "random",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 2,
+      "idManual": 1,
+      "type": "group",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "Cocina ",
+          "objects": "estufa,olla,cucharon"
+        },
+        {
+          "label": "Animales ",
+          "objects": "perro,gato,pato,vaca,leon,jirafa"
+        },
+        {
+          "label": "Muebles de la casa",
+          "objects": "sillas,mesa,cama"
+        },
+        {
+          "label": "Medios de transporte",
+          "objects": "moto,carro,bicicleta"
+        },
+        {
+          "label": "Frutas",
+          "objects": "banano,manzana,uvas"
+        },
+        {
+          "label": "Elementos de aseo",
+          "objects": "jabon,champoo,toalla,cremadental"
+        },
+        {
+          "label": "Otros",
+          "objects": "muneca,zapato,pelota"
+        }
+      ]
+    },
+    {
+      "item": 3,
+      "idManual": 2,
+      "type": "group",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "Cocina ",
+          "objects": "estufa,olla,cucharon"
+        },
+        {
+          "label": "Animales ",
+          "objects": "perro,gato,pato,vaca,leon,jirafa"
+        },
+        {
+          "label": "Muebles de la casa",
+          "objects": "sillas,mesa,cama"
+        },
+        {
+          "label": "Medios de transporte",
+          "objects": "moto,carro,bicicleta"
+        },
+        {
+          "label": "Frutas",
+          "objects": "banano,manzana,uvas"
+        },
+        {
+          "label": "Elementos de aseo",
+          "objects": "jabon,champoo,toalla,cremadental"
+        },
+        {
+          "label": "Otros",
+          "objects": "muneca,zapato,pelota"
+        }
+      ]
+    },
+    {
+      "item": 4,
+      "idManual": 3,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "¿Qué necesito para cortar?",
+          "objects": "tijeras,pelota"
+        },
+        {
+          "label": "¿Qué necesito para tomar la sopa?",
+          "objects": "cucharon,escoba"
+        },
+        {
+          "label": "¿Qué necesito para peinarme?",
+          "objects": "peinilla,zapato"
+        },
+        {
+          "label": "¿Qué necesito para comprar?",
+          "objects": "billete,tijeras"
+        }
+      ]
+    },
+    {
+      "item": 5,
+      "idManual": 4,
+      "type": "sort",
+      "material": "moto,carro,bicicleta,perro,gato,pato,vaca,leon,jirafa,muneca,zapato,pelota,sillas,mesa,cama,estufa,olla,cucharon,banano,manzana,uvas",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 6,
+      "idManual": 5,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "¿Dónde está el señor caminando?",
+          "objects": "senorcaminando,senordormido"
+        },
+        {
+          "label": "¿Dónde está el niño jugando?",
+          "objects": "ninojugando,ninocomiendo"
+        },
+        {
+          "label": "¿Dónde está la señora corriendo?",
+          "objects": "senoracorriendo,senoraleyendo"
+        },
+        {
+          "label": "¿Dónde está la niña leyendo?",
+          "objects": "ninaleyendo,senoranadando"
+        }
+      ]
+    },
+    {
+      "item": 7,
+      "idManual": 11,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "¿Cuál de los dos zapatos es el pequeño?",
+          "objects": "zapatonegropequeno,zapatoblancogrande"
+        },
+        {
+          "label": "¿Cuál de los dos niños come helado?",
+          "objects": "ninogordo,ninoflaco"
+        },
+        {
+          "label": "¿Cuál de las dos es la niña?",
+          "objects": "nina,senora"
+        }
+      ]
+    },
+    {
+      "item": 8,
+      "idManual": 12,
+      "type": "single",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": false,
+      "material": "sillas,mesa,moto,muneca"
+    },
+    {
+      "item": 9,
+      "idManual": 13,
+      "type": "randomButton",
+      "material": "carro,zapato,muneca,sillas,mesa,banano,manzana,perro,gato,pato",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 10,
+      "idManual": 14,
+      "type": "terna",
+      "ap": true,
+      "staticInstructions": false,
+      "dynamicInstructions": [
+        {
+          "label": "¿Qué hay en tu maleta? ",
+          "objects": "cuaderno,medias,relojdepulsera"
+        },
+        {
+          "label": "¿Qué hiciste anoche?",
+          "objects": "vertv,banarse,irapiscina"
+        },
+        {
+          "label": "¿Quién te trajo hoy?",
+          "objects": "abuela,senora,senordeltransporte"
+        },
+        {
+          "label": "¿Dónde está… (persona, familiar)? Esta última pregunta no tiene apoyo visual"
+        }
+      ]
+    },
+    {
+      "item": 11,
+      "idManual": 15,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "¿Cuánto espagueti hay en el plato?",
+          "objects": "muchoespagueti,pocoespagueti"
+        },
+        {
+          "label": "A María le gusta el jugo ¿El vaso de María está?",
+          "objects": "vasolleno,vasovacio"
+        },
+        {
+          "label": "Juan comió ponqué, ¿cuánto ponqué comió Juan?",
+          "objects": "pasteltodo,pastelnada"
+        },
+        {
+          "label": "¿Quién tiene más dulces?",
+          "objects": "ninomasbombones,ninomenosbombones"
+        }
+      ]
+    },
+    {
+      "item": 12,
+      "idManual": 16,
+      "type": "multiple",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "Ejemplo #1",
+          "objects": "ninadesayuna,ninasecepillalosdientes"
+        },
+        {
+          "label": "Ejemplo #2",
+          "objects": "ninopelaunbanano,ninocomebanano"
+        }
+      ],
+      "secondDynamicInstructions": [
+        {
+          "label": "Niño calza",
+          "objects": "ninozapatos,ninomedias"
+        },
+        {
+          "label": "Mamá prepare Cena",
+          "objects": "mamacocina,papamamaehijocomiendo,mamacompramercado"
+        },
+        {
+          "label": "Niño se prepara para el colegio",
+          "objects": "ninoseponepantalon,ninosebana,ninovaparaelcolegio,ninovestidosepeina"
+        },
+        {
+          "label": "Niño Infla globo",
+          "objects": "ninoinflaglobogrande,ninoinflaglobomediano,ninoexplotaglobo,ninogloboenmano,ninoinflaglobopequeno"
+        }
+      ]
+    },
+    {
+      "item": 13,
+      "idManual": 17,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "A María se le cae un vaso al piso, señala lo que paso después",
+          "objects": "vasoroto,vasosobremesa"
+        },
+        {
+          "label": "Si jugamos con fósforos podemos ocasionar un…",
+          "objects": "casaincendiada,casainundada"
+        },
+        {
+          "label": "¿Por qué el niño está en el suelo?",
+          "objects": "ninotropieza,ninocamina"
+        },
+        {
+          "label": "¿Por qué el vidrio de la ventana está roto?",
+          "objects": "ninolanzandopelota,ninojugandopelota"
+        }
+      ]
+    },
+    {
+      "item": 14,
+      "idManual": 18,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 15,
+      "idManual": 19,
+      "type": "pair",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "¿Qué hago si tengo frío?",
+          "objects": "ninobanandose,ninoconsaco"
+        },
+        {
+          "label": "¿Si estoy enfermo a dónde tengo que ir?",
+          "objects": "ninoconelmedico,ninoenelparque"
+        },
+        {
+          "label": "¿Si se daña el carro qué debemos hacer?",
+          "objects": "lavarelcarro,carroconelmecanico"
+        },
+        {
+          "label": "¿Si rompo el pantalón que tengo que hacer?",
+          "objects": "coserpantalon,plancharpantalon"
+        }
+      ]
+    },
+    {
+      "item": 16,
+      "idManual": 20,
+      "type": "sort",
+      "ap": true,
+      "staticInstructions": true,
+      "dynamicInstructions": false,
+      "material": "perro,gato,pato,sillas,mesa,pelota"
+    },
+    {
+      "item": 17,
+      "idManual": 22,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 18,
+      "idManual": 23,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 19,
+      "idManual": 24,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 20,
+      "idManual": 25,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 21,
+      "idManual": 26,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 22,
+      "idManual": 27,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 23,
+      "idManual": 28,
+      "ap": true,
+      "type": "multimedia",
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "Perro - gato",
+          "objects": "perro,gato"
+        },
+        {
+          "label": "Vaca - pollito",
+          "objects": "vaca,pollito"
+        },
+        {
+          "label": "Caballo - gato",
+          "objects": "caballo,gato"
+        }
+      ]
+    },
+    {
+      "item": 24,
+      "idManual": 29,
+      "ap": true,
+      "type": "multimedia",
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "Lluvia - moto",
+          "objects": "lluvia,moto"
+        },
+        {
+          "label": "Trueno - avión",
+          "objects": "trueno,avion"
+        },
+        {
+          "label": "Descargar la cisterna del baño - lluvia",
+          "objects": "bano,lluvia"
+        }
+      ]
+    },
+    {
+      "item": 25,
+      "idManual": 30,
+      "ap": true,
+      "type": "multimedia",
+      "staticInstructions": true,
+      "dynamicInstructions": [
+        {
+          "label": "Estornudar - toser",
+          "objects": "estornudar,toser"
+        },
+        {
+          "label": "Llanto de bebé - toser",
+          "objects": "llantodebebe,toser"
+        },
+        {
+          "label": "Risa - aplaudir",
+          "objects": "reir,aplaudir"
+        }
+      ]
+    },
+    {
+      "item": 26,
+      "idManual": 31,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 27,
+      "idManual": 32,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 28,
+      "idManual": 33,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 29,
+      "idManual": 34,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 30,
+      "idManual": 35,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 31,
+      "idManual": 36,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 32,
+      "idManual": 37,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 33,
+      "idManual": 38,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 34,
+      "idManual": 39,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 35,
+      "idManual": 40,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 36,
+      "idManual": 41,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 37,
+      "idManual": 42,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 38,
+      "idManual": 43,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 39,
+      "idManual": 44,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 40,
+      "idManual": 45,
+      "ap": false,
+      "staticInstructions": false,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 41,
+      "idManual": 21,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 42,
+      "idManual": 6,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 43,
+      "idManual": 7,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 44,
+      "idManual": 8,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 45,
+      "idManual": 9,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    },
+    {
+      "item": 46,
+      "idManual": 10,
+      "ap": false,
+      "staticInstructions": true,
+      "dynamicInstructions": false
+    }
+  ]
+}

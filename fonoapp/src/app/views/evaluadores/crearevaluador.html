@@ -1,0 +1,63 @@
+<style>
+    input.ng-invalid
+    {
+        border-bottom: 2px solid #bc0048;
+    }
+</style>
+
+<md-content md-theme="dark" class="md-padding" layout="row" layout-align="center" layout-sm="column">
+    <h2>Crear un nuevo evaluador</h2>
+</md-content>
+
+
+<md-content class="md-padding">
+    <form name="evaluadorForm">
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Nombre completo</label>
+                <input ng-model="vm.evaluador.NOMBRE_EVALUADOR" name="nombre_evaluador" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Teléfono</label>
+                <input ng-model="vm.evaluador.TELEFONO" name="telefono" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Número de identificación</label>
+                <input ng-model="vm.evaluador.NUMERO_IDENTIFICACION" name="numero_identificacion" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Correo electrónico</label>
+                <input ng-model="vm.evaluador.CORREO" name="correo" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Contraseña</label>
+                <input ng-model="vm.evaluador.CLAVE" type="password" name="clave" required>
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Confirmar contraseña</label>
+                <input type="password" ng-model="vm.RCLAVE" name="rclave" required>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised" md-colors="{background: 'pink'}" ng-click="vm.onSubmit()"
+                   ng-disabled="!evaluadorForm.$valid || evaluadorForm.rclave.$viewValue !=  evaluadorForm.clave.$viewValue
+                    || ( evaluadorForm.clave.$viewValue|| '').length < 8">
+            Guardar
+        </md-button>
+    </form>
+</md-content>

@@ -1,0 +1,33 @@
+<style>
+    input.ng-invalid
+    {
+        border-bottom: 2px solid #bc0048;
+    }
+</style>
+
+<md-content md-theme="dark" class="md-padding" layout="row" layout-align="center" layout-sm="column">
+    <h2>Encuentros</h2>
+</md-content>
+
+<md-content class="md-padding">
+    <div layout="row" layout-align-gt-md="center">
+
+        <form name="evaluadorForm">
+            <div layout layout-md="column">
+                <md-input-container>
+                    <label>Selecione un paciente</label>
+                    <md-select ng-model="vm.paciente" id="spatient">
+                        <md-option ng-value="paciente.ID_PACIENTE" ng-repeat="paciente in vm.pacientes">
+                            {{paciente.NOMBRES_PACIENTE+' '+paciente.APELLIDOS_PACIENTE}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <md-button ng-hide="vm.paciente<=0" class="md-raised" md-colors="{background: 'green'}"
+                       ng-click="vm.onSubmit()"
+                       ng-disabled="!evaluadorForm.$valid">
+                Iniciar prueba
+            </md-button>
+        </form>
+    </div>
+</md-content>
