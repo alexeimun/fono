@@ -6,7 +6,7 @@
 
     function urlBunch()
     {
-        var hostname = 'http://localhost/fonorest';
+        var hostname = 'http://localhost/fono';
         return {
             //Encuentros available urls
             encuentros: {

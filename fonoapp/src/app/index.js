@@ -150,6 +150,4 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch', 'ng
             'A400': '#E75753',
             'A700': '#E75753'
         });
-
-        $mdIconProvider.icon('user', 'assets/images/user.svg', 64);
     });

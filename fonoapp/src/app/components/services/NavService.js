@@ -24,11 +24,6 @@
                     name: 'Pacientes',
                     icon: 'people',
                     sref: '.pacientes'
-                },
-                {
-                    name: 'Table',
-                    icon: 'view_module',
-                    sref: '.table'
                 }
             ];
         }

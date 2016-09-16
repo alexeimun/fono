@@ -22,7 +22,7 @@
         vm.time = {seg: 0, min: 0};
         vm.timeQuestion = {seg: 0, min: 0};
         vm.paciente = evaluadorService.getPaciente();
-        vm.index = 45;
+        vm.index = 0;
         vm.instructionIndex = -1;
         vm.questions = [];
         vm.questionItems = [];
@@ -319,7 +319,6 @@
             angular.forEach(images, function (img)
             {
                 list.push(vm.allImages[vm.allRawImages.indexOf(img.split('/')[img.split('/').length - 1].replace('.png', ''))]);
-                // console.log(list[list.length - 1], img)
                 list[list.length - 1].url = img;
             });
             return list;
