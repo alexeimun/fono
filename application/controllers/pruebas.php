@@ -31,6 +31,22 @@
             }
         }
 
+        public function responses_get($id_paciente,$id_encuentro)
+        {
+            $responses = $this->pruebas_model->getRespuestas($id_paciente,$id_encuentro);
+            if($responses)
+            {
+                $this->response($responses, REST_Controller::HTTP_OK);
+            }
+            else
+            {
+                $this->response([
+                    'status' => false,
+                    'message' => 'No responses were found',
+                ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+            }
+        }
+
         public function questions_get()
         {
             $questions = $this->pruebas_model->getQuestios();
